@@ -18,14 +18,14 @@ CONSTRAINT Pk_filmes PRIMARY KEY (id_filmes, id_midia)
 
 insert into filmes values 
 
-(656560,'DIVERTIDAMENTE','COM�DIA', 1001,'DUB','DVD',25,'3,50'), 
-(656561,'BAMBI',' DRAMA', 1002,'DUB','VHS',25,'3,50'), 
-(656562,'AS MEM�RIAS DE MARNIE',' DRAMA', 1003,'LEG','DVD',25,'3,50'), 
+(656560,'DIVERTIDAMENTE','COMÉDIA', 1001,'DUB','DVD',25,'3,50'), 
+(656561,'ROCKY:UM LUTADOR',' DRAMA', 1002,'DUB','VHS',25,'3,50'), 
+(656562,'AS MEMÓRIAS DE MARNIE',' DRAMA', 1003,'LEG','DVD',25,'3,50'), 
 (656563,'UM SONHO DE LIBERDADE',' DRAMA', 1004,'LEG','VHS',25,'3,50'), 
-(323234,'NO LIMITE DO AMANH�','FIC��O',2550,'DUB','DVD',32,'4,20'),
-(323231,'OS CA�A-FANTASMA','FIC��O',2551,'DUB','VHS',32,'4,20'),
-(323232,'NO LIMITE DO AMANH�','FIC��O',2552,'LEG','DVD',32,'4,20'),
-(323233,'O PODEROSO CHEF�O','FIC��O',2553,'LEG','VHS',32,'4,20');
+(323234,'NO LIMITE DO AMANHÃ','FICÇÃO',2550,'DUB','DVD',32,'4,20'),
+(323231,'OS CAÇA-FANTASMA','FICÇÃO',2551,'DUB','VHS',32,'4,20'),
+(323232,'NO LIMITE DO AMANHÃ','FICÇÃO',2552,'LEG','DVD',32,'4,20'),
+(323233,'O PODEROSO CHEFÃO','FICÇÃO',2553,'LEG','VHS',32,'4,20');
 
 
 
@@ -42,14 +42,14 @@ primary key (id_filmes)
 
 
 INSERT INTO v_filmes values 
-(656560,'DIVERTIDAMENTE','COM�DIA'),
-(656561,'BAMBI',' DRAMA'),
-(656562,'AS MEM�RIAS DE MARNIE',' DRAMA'),
+(656560,'DIVERTIDAMENTE','COMÉDIA'),
+(656561,'ROCKY:UM LUTADOR',' DRAMA'),
+(656562,'AS MEMÓRIAS DE MARNIE',' DRAMA'),
 (656563,'UM SONHO DE LIBERDADE',' DRAMA'),
-(323234,'NO LIMITE DO AMANH�','FIC��O'),
-(323231,'OS CA�A-FANTASMA','FIC��O'),
-(323232,'NO LIMITE DO AMANH�','FIC��O'),
-(323233,'O PODEROSO CHEF�O','FIC��O');
+(323234,'NO LIMITE DO AMANHÃ','FICÇÃO'),
+(323231,'OS CAÇA-FANTASMA','FICÇÃO'),
+(323232,'NO LIMITE DO AMANHÃ','FICÇÃO'),
+(323233,'O PODEROSO CHEFÃO','FICÇÃO');
 
 
 UPDATE v_filmes
@@ -79,22 +79,28 @@ values  (1001,656560 ,'DUB','DVD','25','3,50'),
 		(2552,323232 ,'LEG','DVD','32','4,20'),
 		(2553,323233 ,'LEG','VHS','32','4,20');
 
----CERTO
+
+
+
+---2FN: NO
+select * from filmes
+
+--- 2FN: OK
 select * from midia
 select * from v_filmes
 
----ERRADO
-select * from filmes
 
 
----VIEWS
+--- CREATING 'VIEWS'
 create view [filmes_VHS]
 	as select id_filmes, tipo,secao from midia where tipo = 'VHS';
+	
+	
 
----VISUAIZANDO UMA VIEWS
+---VIEWING A 'VIEWS'
 select * from filmes_VHS
 
----EXCUINDO UMA VIEW
+---EXCUINDO UMA 'VIEWS'
 drop view filmes_VHS
 
 
