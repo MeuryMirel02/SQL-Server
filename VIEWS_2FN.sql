@@ -30,7 +30,6 @@ insert into filmes values
 
 
 
---entidade v_filmes 
 
 CREATE table v_filmes (
 id_filmes int not null,
